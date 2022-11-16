@@ -1,0 +1,39 @@
+.usuario{
+    display: inherit;
+    width: 450px;
+}
+.nombreape{
+    display: inherit;
+    width: 450px;
+}
+.celemail{
+    display: inherit;
+    width: 450px;
+}
+.col-md-2{
+    width: 100px;
+}
+
+.puesto{
+    width: 230px;
+}
+.ubicacion{
+    width: 230px;
+    
+}
+.tipusua{
+    margin-left: 15px;
+    display:inherit ;
+}
+.anular{
+    margin-left: 22px;
+}
+.botonesconfig{
+    display: inherit;
+    margin-top: 50px;
+    margin-left: 70px;
+    
+}
+.btncon{
+    margin-left: 10px;
+}
