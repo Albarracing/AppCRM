@@ -169,10 +169,10 @@ const {form}=this.state;
     <div className="container">
     <div className="row">
       {/* <div class="col-9">.col-9</div> */}
-      <label>Maestro de Ususarios</label>
+      <h5 className="titulocon">Maestro de Ususarios</h5>
       <div className="col">
           {/* grilla */}
-          <Table striped bordered hover className='tabla'>
+          <Table striped bordered hover className='tablacon'>
                 <thead >
                     <tr className='acciones'>
                         <th>Id</th>
@@ -213,11 +213,12 @@ const {form}=this.state;
           <form  className="row g-3">
 
                <div  className="col-md-2">
-                  <input type="text"  className="form-control" id="id" name="id" placeholder='Códigos' readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
+                  <input type="text"  className="id form-control" id="id" name="id" placeholder='Códigos' readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
                </div> 
               <div className="usuario">    
               <input type="text"  className="form-control" placeholder='Usuario' name="usuario" id="usuario" onChange={this.handleChange} value={form?form.usuario:''}/>
               <input type="Password"  className="form-control" placeholder='Contraseña' name="contraseña" id="contraseña" onChange={this.handleChange} value={form?form.contraseña:''}/>
+
               </div>
               <div className="nombreape">
               <input type="text"  className="form-control" placeholder='Nombre' name="nombre" id="nombre" onChange={this.handleChange} value={form?form.nombre:''}/>
@@ -302,14 +303,14 @@ const {form}=this.state;
                 </div>
                   
             <div className="botonesconfig">
-            {this.state.tipoModal=='insertar'?
-                    <button className="btn btn-success" onClick={()=>this.peticionPost()}>
+            {this.state.tipoModal==='insertar'?
+                    <button className="btncon btn btn-success" onClick={()=>this.peticionPost()}>
                     Insertar
-                  </button>: <button className="btn btn-primary" onClick={()=>this.peticionPut()}>
+                  </button>: <button className="btncon btn btn-primary" onClick={()=>this.peticionPut()}>
                     Actualizar
                   </button>
   }
-                    <button className="btn btn-danger" onClick={()=>this.modalInsertar()}>Cancelar</button>
+                    <button className="btncon btn btn-danger" onClick={()=>this.modalInsertar()}>Cancelar</button>
             </div>
               <Modal isOpen={this.state.modalEliminar}>
             <ModalBody>

@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 //import CompCreatePedidoPrueb from './CreatePrueba'
 //import {useForm} from 'react-hook-form'
-
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import Home from '../../home/home'
@@ -12,7 +11,10 @@ import { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt, faPlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import {CSVLink} from 'react-csv'
 const URI = 'http://localhost:9000/frescos/'
+
+
 
 class Frescos extends Component {
     state={
@@ -133,14 +135,16 @@ render(){
           <h5 className='titulofres'>Maestro de frescos</h5>
         </div>
         <div className='btnexportarfres'>
-            <button className='expofres'><i className="fa-sharp fa-solid fa-file-pdf"></i></button>
-            <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button>
+            {/* <button className='expofres'><i className="fa-sharp fa-solid fa-file-pdf"></i></button>
+            <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button> */}
+            <CSVLink data={'tablafrescos'}> <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button></CSVLink>
+              
         </div>
         {/* <Button className="btnNuevo btn btn-success mr-2 btn-sm" type='submit' onClicks={handleShow} />  */}
          <div className='containertablafres'>
            <div className='row'>
             <div className='col'>
-                <Table striped bordered hover className='tablafres'>
+                <Table striped bordered hover className='tablafres' id='tablafrescos'>
                     <thead >
                         <tr className='acciones'>
                             <th>Id</th>

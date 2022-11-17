@@ -1,7 +1,11 @@
+.container{
+    height: 100%;
+}
 .usuario{
     display: inherit;
-    width: 450px;
+    
 }
+
 .nombreape{
     display: inherit;
     width: 450px;
@@ -31,9 +35,13 @@
 .botonesconfig{
     display: inherit;
     margin-top: 50px;
-    margin-left: 70px;
+    margin-left: 280px;
     
 }
 .btncon{
-    margin-left: 10px;
+    margin-left: 20px;
+}
+
+.titulocon{
+   margin-left: 58px;
 }
