@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import Table from 'react-bootstrap/Table';
 import axios from 'axios'
+import Home from '../home/home'
 import './config.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt, faPlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -25,7 +26,8 @@ class Configuracion extends Component {
             puesto:'',
             ubicacion:'',
             tip_usuario:'',
-            tipoModal: '',
+            anular_usuario:'',
+            
         }
     }
 
@@ -77,6 +79,7 @@ class Configuracion extends Component {
             puesto: transporte.puesto,
             ubicacion: transporte.ubicacion,
             tip_usuario: transporte.tip_usuario,
+            anular_usuario: transporte.anular_usuario,
         }
     })
   }
@@ -166,15 +169,24 @@ const {form}=this.state;
     //             <button class="btn btn-primary" type="submit">Submit form</button>
     //         </form>
     //    </div>
-    <div className="container">
-    <div className="row">
+    <>
+    <div className='homefres'>
+        <Home/> 
+        </div>
+    <div className="containercon">
+   
       {/* <div class="col-9">.col-9</div> */}
+      <div className='cabezeraconfig'>
+      
+      <button className="btncon btn btn-success" onClick={()=>{this.setState({form: null, tipoModal: 'insertar'}); this.modalInsertar()}}><FontAwesomeIcon icon={faPlus} /></button>
       <h5 className="titulocon">Maestro de Ususarios</h5>
+      </div>
+      <div className="row">
       <div className="col">
           {/* grilla */}
-          <Table striped bordered hover className='tablacon'>
+          <Table striped bordered hover className='tablacon' size="sm">
                 <thead >
-                    <tr className='acciones'>
+                    <tr className='accionesconfig'>
                         <th>Id</th>
                         <th>Usuario</th>
                         <th>Cargo</th>
@@ -183,7 +195,7 @@ const {form}=this.state;
                         <th>Acciones</th> */}
                     </tr>
                 </thead>
-                 <tbody>
+                 <tbody className="accionescon2">
                  {this.state.data.map(transporte=>{
                     return(
                         <tr>
@@ -204,16 +216,19 @@ const {form}=this.state;
                 </tbody>
             </Table>
 
-      </div>
+            <Modal isOpen={this.state.modalInsertar} className='modalcombus'>
+            <ModalHeader className='modalhedertrans' style={{display: 'block'}}>
+            <span style={{float: 'right'}} onClick={()=>this.modalInsertar()}>X</span> 
+            </ModalHeader>
   
       {/* dividir la pantalla a la mitad */}
-  
+      <ModalBody>
       <div  className="conte col-6">
           {/* form */}
-          <form  className="row g-3">
+          {/* <form  className="row g-3"> */}
 
                <div  className="col-md-2">
-                  <input type="text"  className="id form-control" id="id" name="id" placeholder='Códigos' readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
+                  <input type="text"  className="id form-control" id="id" name="id" readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
                </div> 
               <div className="usuario">    
               <input type="text"  className="form-control" placeholder='Usuario' name="usuario" id="usuario" onChange={this.handleChange} value={form?form.usuario:''}/>
@@ -257,7 +272,7 @@ const {form}=this.state;
 
               </div> */}
             
-              <div className="puesto col-md-6">
+              <div className="puesto">
                     <select className="form-select" placeholder="Puesto" name="puesto" id="puesto" onChange={this.handleChange} value={form?form.puesto:''} >
                     <option selected>Elige...</option>
                     <option>Cocinero</option>
@@ -265,54 +280,61 @@ const {form}=this.state;
                     <option>Administrativo</option>
                     <option>Capataz</option>
                   </select>
-              </div>
-              <div className="ubicacion col-md-6">
-                    <select className="form-select" placeholder="Ubicación" name="ubicacion" id="ubicacion" onChange={this.handleChange} value={form?form.ubicacion:''}>
+              
+              
+                    <select className="tipubi form-select" placeholder="Ubicación" name="ubicacion" id="ubicacion" onChange={this.handleChange} value={form?form.ubicacion:''}>
                     <option selected>Elige...</option>
                     <option>Santa Isabel</option>
                     <option>Otros</option>
                     <option>Teode</option>
                     <option>Venado t</option>
                   </select>
+                  
               </div>
+              <br/>
+              <br/>
               
                 <label>Tipo de usuario</label>
                 <div className="tipusua">
-                  <div className="nivel1 form-check col-md-4">
-                    <input className="form-check-input" type="checkbox" id="gridCheck"/>
+                  
+                    <input className="form-check-input" type="checkbox" name="tip_usuario" id="tip_usuario" onChange={this.handleChange} value={form?form.tip_usuario:''} />
                     <label className="form-check-label" for="gridCheck">
                         Nivel 1 
                     </label>
-                  </div>
-                  <div className="form-check col-md-4">
-                    <input className="form-check-input" type="checkbox" id="gridCheck"/>
+                 
+                 
+                    <input className="niveles form-check-input" type="checkbox" name="tip_usuario" id="tip_usuario" onChange={this.handleChange} value={form?form.tip_usuario:''} />
                     <label className="form-check-label" for="gridCheck">
                         Nivel 2
                     </label>
-                  </div>
-                  <div className="form-check col-md-4">
-                    <input className="form-check-input" type="checkbox" id="gridCheck"/>
+                 
+                    <input className="niveles form-check-input" type="checkbox" name="tip_usuario" id="tip_usuario" onChange={this.handleChange} value={form?form.tip_usuario:''}/>
                     <label className="form-check-label" for="gridCheck">
                         Nivel 3
                     </label>
-                  </div>
+                  
                   </div>
                   <div className="anular form-check col-md-4">
-                    <input className="form-check-input" type="checkbox" id="gridCheck"/>
-                    <label className="form-check-label" for="gridCheck"> Anula Usuario </label>
+                    <input className="form-check-input" type="checkbox" name="anular_usuario" id="anular_usuario" onChange={this.handleChange} value={form?form.anular_usuario:''}/>
+                    <label className="anularusu form-check-label" for="gridCheck"> Anula Usuario </label>
                 </div>
-                  
-            <div className="botonesconfig">
-            {this.state.tipoModal==='insertar'?
-                    <button className="btncon btn btn-success" onClick={()=>this.peticionPost()}>
+              </div>
+                </ModalBody>
+           
+                <ModalFooter>
+                  {this.state.tipoModal==='insertar'?
+                    <button  className="btn btn-success" onClick={()=>this.peticionPost()}>
                     Insertar
-                  </button>: <button className="btncon btn btn-primary" onClick={()=>this.peticionPut()}>
+                  </button> :<button className="btn btn-primary" onClick={()=>this.peticionPut()}>
                     Actualizar
-                  </button>
-  }
-                    <button className="btncon btn btn-danger" onClick={()=>this.modalInsertar()}>Cancelar</button>
-            </div>
+                  </button>}
+  
+                    <button className="btn btn-danger" onClick={()=>this.modalInsertar()}>Cancelar</button>
+                </ModalFooter>
+                </Modal>
+
               <Modal isOpen={this.state.modalEliminar}>
+
             <ModalBody>
                Estás seguro que deseas eliminar a la pedido: {form && form.id}
             </ModalBody>
@@ -321,11 +343,12 @@ const {form}=this.state;
               <button className="btn btn-secundary" onClick={()=>this.setState({modalEliminar: false})}>No</button>
             </ModalFooter>
           </Modal>
-        </form>
+        {/* </form> */}
+        
       </div>
     </div> 
 </div>
-
+</>
 
     )
 }

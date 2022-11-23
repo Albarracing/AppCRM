@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from 'primereact/button';
 //import CompCreatePedidoPrueb from './CreatePrueba'
 //import {useForm} from 'react-hook-form'
@@ -12,8 +12,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt, faPlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import {CSVLink} from 'react-csv'
+//import { DownloadTableExcel } from 'react-export-table-to-excel';
+//import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 const URI = 'http://localhost:9000/frescos/'
-
 
 
 class Frescos extends Component {
@@ -29,7 +30,7 @@ class Frescos extends Component {
             fecha_entrega: ''
           }
         }
-
+    
         peticionGet=()=>{
             axios.get(URI).then(response=>{
               this.setState({data: response.data});
@@ -119,9 +120,11 @@ class Frescos extends Component {
 
         //  const handleClose = () => setShow(false);
         //  const handleShow = () => setShow(true);
+  
+
 
 render(){
-    const {form}=this.state;
+    const {data}=this.state;
  return(
     <>
         <div className='homefres'>
@@ -137,14 +140,14 @@ render(){
         <div className='btnexportarfres'>
             {/* <button className='expofres'><i className="fa-sharp fa-solid fa-file-pdf"></i></button>
             <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button> */}
-            <CSVLink data={'tablafrescos'}> <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button></CSVLink>
-              
+             <CSVLink data={data} filename={"tablafrescos.csv"}> <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button></CSVLink> 
+           
         </div>
         {/* <Button className="btnNuevo btn btn-success mr-2 btn-sm" type='submit' onClicks={handleShow} />  */}
          <div className='containertablafres'>
            <div className='row'>
             <div className='col'>
-                <Table striped bordered hover className='tablafres' id='tablafrescos'>
+                <Table striped bordered hover className='tablafres' >
                     <thead >
                         <tr className='acciones'>
                             <th>Id</th>
@@ -203,18 +206,18 @@ render(){
                 <ModalBody>
                   <div className="form-group">
                     <label htmlFor="id">ID</label>
-                    <input className="form-control" type="text" name="id" id="id" readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
+                    <input className="form-control" type="text" name="id" id="id" readOnly onChange={this.handleChange} value={data?data.id: this.state.data.length+1}/>
                     <br />
                     <label for="formGroupExampleInput2" className="fecha form-label">Ingrese fecha de entrega</label>
-                    <input  type='date' name='fecha_entrega' className="fechainfo form-control" id='fecha_entrega' onChange={this.handleChange} value={form?form.fecha_entrega: ''} required={true}></input>
+                    <input  type='date' name='fecha_entrega' className="fechainfo form-control" id='fecha_entrega' onChange={this.handleChange} value={data?data.fecha_entrega: ''} required={true}></input>
                     <br/>
-                    <select className="fechainfo form-select" name='categoria' id='categoria' onChange={this.handleChange} value={form?form.categoria: ''} required={true}>
+                    <select className="fechainfo form-select" name='categoria' id='categoria' onChange={this.handleChange} value={data?data.categoria: ''} required={true}>
                     <option selected>Seleccione categoria</option>
                     <option>Carne</option>
                         <option>Verdura</option>
                 </select>
                     <br />
-                    <select className="fechainfo form-select" name='articulos' id='articulos' onChange={this.handleChange} value={form?form.articulos: ''} required >
+                    <select className="fechainfo form-select" name='articulos' id='articulos' onChange={this.handleChange} value={data?data.articulos: ''} required >
                           <option selected>Seleccione articulo</option>
                           <option >Carne vaca</option>
                           <option>pollo</option>
@@ -222,7 +225,7 @@ render(){
                       </select>
                     <br />
                     <label htmlFor="capital_bursatil">Ingrese cantidad</label>
-                    <input className="form-control" type="text" name="cantidad" id="cantidad" onChange={this.handleChange} value={form?form.cantidad:''} required={true}/>
+                    <input className="form-control" type="text" name="cantidad" id="cantidad" onChange={this.handleChange} value={data?data.cantidad:''} required={true}/>
                   </div>
                 </ModalBody>
                 <ModalFooter>
@@ -238,7 +241,7 @@ render(){
           </Modal>
           <Modal isOpen={this.state.modalEliminar}>
             <ModalBody>
-               Estás seguro que deseas eliminar a la pedido: {form && form.id}
+               Estás seguro que deseas eliminar a la pedido: {data && data.id}
             </ModalBody>
             <ModalFooter>
               <button className="btn btn-danger" onClick={()=>this.peticionDelete()}>Sí</button>

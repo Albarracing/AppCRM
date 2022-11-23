@@ -188,6 +188,7 @@ return(
                 <Modal isOpen={this.state.modalInsertar}>
                 <ModalHeader style={{display: 'block'}}>
                   <span style={{float: 'right'}} onClick={()=>this.modalInsertar()}>x</span>
+                  <h5>Recargas telefonicas</h5>
                 </ModalHeader>
                 <ModalBody>
                   <div className="form-group">
@@ -200,7 +201,7 @@ return(
                     <label htmlFor="capital_bursatil">Empresa telefonica</label>
                     <input className="form-control" type="text" name="empresa_tel" id="empresa_tel" onChange={this.handleChange} value={form?form.empresa_tel:''} required={true}/>
                     <br/>
-                    <label htmlFor="capital_bursatil">Nuemro de linea</label>
+                    <label htmlFor="capital_bursatil">Numero de linea</label>
                     <input className="form-control" type="text" name="numero_linea" id="numero_linea" onChange={this.handleChange} value={form?form.numero_linea:''} required={true}/>
                     <br/>
                     <label htmlFor="capital_bursatil">Importe a pagar</label>

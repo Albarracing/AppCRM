@@ -1,17 +1,34 @@
-.container{
+.containercon{
     height: 100%;
 }
 .usuario{
-    display: inherit;
+    display:flex;
+    width: 450px;
+    
+}
+.cabezeraconfig{
+    margin-left: 40px;
+   margin-bottom: 1px;
+   margin-top: 15px;
+}
+.titulocon{
+    float: right;
+    margin-right: 75%;
     
 }
 
+.accionesconfig{
+    text-align: center;
+}
+.accionescon2{
+    text-align: center;
+}
 .nombreape{
-    display: inherit;
+    display: flex;
     width: 450px;
 }
 .celemail{
-    display: inherit;
+    display: flex;
     width: 450px;
 }
 .col-md-2{
@@ -19,18 +36,35 @@
 }
 
 .puesto{
-    width: 230px;
+    display: -webkit-inline-box;
+    width: 210px;
+    margin-left: 8px;
 }
 .ubicacion{
-    width: 230px;
+    display: -webkit-inline-box;
+    width: 250px;
+    
+}
+.tipubi{
+    margin-left: 10px;
     
 }
 .tipusua{
-    margin-left: 15px;
-    display:inherit ;
+    margin-left: 5px;
+    display:flex;
+}
+.niveles{
+    margin-left: 5px;
+    
 }
 .anular{
-    margin-left: 22px;
+    margin-top: 10px;
+    margin-left: 5px;
+    
+}
+
+.anularusu{
+    display: flex;
 }
 .botonesconfig{
     display: inherit;
