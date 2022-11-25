@@ -20,6 +20,9 @@ const InformesModel = db.define('informes',{
     bolsa_hielo :{type:DataTypes.NUMBER},
     hielo_trafic :{type:DataTypes.NUMBER},
     observaciones: {type: DataTypes.STRING},
+    semillero_hielo: {type: DataTypes.STRING},
+    agua_complejo:{type: DataTypes.STRING},
+    hielo_complejo:{type: DataTypes.STRING},
 })
 
 export default InformesModel

@@ -8,11 +8,12 @@ const ConfiguracionModel = db.define('usuarios',{
     contraseña:{type: DataTypes.STRING},
     nombre :{type: DataTypes.STRING},
     apellido :{type: DataTypes.STRING},
-    telefono :{type: DataTypes.NUMBER},
+    telefono :{type: DataTypes.STRING},
     email :{type: DataTypes.STRING},
     puesto:{type: DataTypes.STRING},
     ubicacion:{type: DataTypes.STRING},
-    tip_usuario:{type: DataTypes.STRING}
+    tip_usuario:{type: DataTypes.BOOLEAN},
+    anular_usuario:{type: DataTypes.BOOLEAN}
 
 })
 
