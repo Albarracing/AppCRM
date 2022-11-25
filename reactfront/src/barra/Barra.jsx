@@ -33,7 +33,7 @@ const Barra = () =>{
       },
       {
         path:"/Informes",
-        name:"Frescos",
+        name:"Informes",
         icon:<AiOutlineFileDone/>
       },
       {
@@ -54,7 +54,7 @@ const Barra = () =>{
       },
       {
         path:"/telefono",
-        name:"Telefono",
+        name:"Feléfono",
         icon:<BsTelephone/>
     },
     {

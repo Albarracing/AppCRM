@@ -12,6 +12,8 @@ import Table from 'react-bootstrap/Table'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt, faPlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+
 const URI = 'http://localhost:9000/secos/'
 
 
@@ -130,14 +132,20 @@ return(
       <h5 className='tituloseco'>Maestro de secos</h5>
     </div>
     <div className='btnexportarse'>
-        <button className='expose'><i className="fa-sharp fa-solid fa-file-pdf"></i></button>
-        <button className='expose'><i className="fa-sharp fa-solid fa-file-excel"></i></button>
+    <ReactHTMLTableToExcel
+                   
+                   className="expose fa-sharp fa-solid fa-file-excel"
+                   table="table-to-xls"
+                   filename="Secos"
+                   sheet="Secos"
+                   >
+         <button className='expose'><i className="fa-sharp fa-solid fa-file-excel"></i></button></ReactHTMLTableToExcel>
     </div>
     {/* <Button className="btnNuevo btn btn-success mr-2 btn-sm" type='submit' onClicks={handleShow} />  */}
      <div className='containertablase'>
        <div className='row'>
         <div className='col'>
-            <Table striped bordered hover className='tablase' size="sm">
+            <Table striped bordered hover className='tablase' size="sm" id='table-to-xls'>
                 <thead >
                     <tr className='accionesse'>
                         <th>Id</th>

@@ -233,10 +233,12 @@ render(){
                     <br/>
                     <br/>
                     <br/>
+                    <br/>
+                    <br/>
                     <h5>Datos adicionales</h5>
                     <hr/>
                     </div>
-                    
+                   
                     <div className='tercerinput'>
                 <h5>Vencimiento seguro</h5> <h5>Vencimiento patente</h5>
                 <input  type='date' className="calendario form-control" name="ven_seguro" id="ven_seguro" placeholder='Carga maxima' onChange={this.handleChange} value={form?form.ven_seguro:''}/>
@@ -250,6 +252,8 @@ render(){
                     <br/>
                     <br/>
                     <br />
+                    <br/>
+                    <br/>
                     <br/>
                 </ModalBody>
 

@@ -152,8 +152,8 @@ render(){
                    
                     className="fa-sharp fa-solid fa-file-excel"
                     table="table-to-xls"
-                    filename="tablexls"
-                    sheet="tablexls"
+                    filename="Frescos"
+                    sheet="Frescos"
                     >
           <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button></ReactHTMLTableToExcel>
           </div>
@@ -177,7 +177,7 @@ render(){
          <div className='containertablafres'>
            <div className='row'>
             <div className='col'>
-                <Table striped bordered hover className='tablafres' id='table-to-xls'>
+                <Table striped bordered hover className='tablafres' >
                     <thead >
                         <tr className='acciones'>
                             <th>Id</th>
@@ -188,10 +188,10 @@ render(){
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody className='acciones2'>
+                    <tbody className='acciones2' id='table-to-xls'>
                     {this.state.data.map (transporte => {
                         return(
-                        <tr>
+                        <tr id='table-to-xls'>
                             <td>{transporte.id}</td>
                             <td>{transporte.categoria}</td>
                             <td className='campofres'>{transporte.articulos}</td>

@@ -74,7 +74,7 @@ const Home = () =>{
       return (
 
         <div>
-          <Link className='iconouser' to='/notificaciones' onClick={()=>{ this.setState({modalEliminar: true})}}><FontAwesomeIcon icon={faBell} /></Link> 
+          {/* <Link className='iconouser' to='/notificaciones' onClick={()=>{ this.setState({modalEliminar: true})}}><FontAwesomeIcon icon={faBell} /></Link>  */}
 
           <Barra/>
           

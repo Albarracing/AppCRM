@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt, faPlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { MdImportExport } from 'react-icons/md';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+
 const URI = 'http://localhost:9000/informes/'
 
 class Informes extends Component {
@@ -37,6 +39,32 @@ class Informes extends Component {
             semillero_hielo:'',
             agua_complejo:'',
             hielo_complejo:'',
+            fecha_estadia:'',
+            cantidad_changos:'',
+            cant_almuerzo_changos:'',
+            cant_cena_changos:'',
+            ingreso_changos:'',
+            ingreso_changos_hora:'',
+            salida_changos:'',
+            salida_changos_hora:'',
+            cantidad_chofer:'',
+            cantidad_almuerzo_chofer:'',
+            cantidad_cena_chofer:'',
+            ingreso_chofer:'',
+            ingreso_chofer_hora:'',
+            salida_chofer:'',
+            salida_chofer_hora:'',
+            cant_estadia_cober_prop:'',
+            cant_almuer_estadia_cober_prop:'',
+            cant_cena_estadia_cober_prop:'',
+            ingre_estadia_cober_prop:'',
+            ingre_hora_estadia_cober_prop:'',
+            sali_estadia_cober_prop:'',
+            sali_hora_estadia_cober_prop:'',
+            chango_por_llegar_dia:'',
+            chango_por_llegar_hora:'',
+            chango_por_salir_cant:'',
+
             tipoModal:'',
         }
     }
@@ -100,7 +128,31 @@ class Informes extends Component {
                 semillero_hielo:transporte.semillero_hielo,
                 agua_complejo:transporte.agua_complejo,
                 hielo_complejo:transporte.hielo_complejo,
-              }
+                fecha_estadia: transporte.fecha_estadia,
+                cant_almuerzo_changos: transporte.cant_almuerzo_changos,
+                cant_cena_changos: transporte.cant_cena_changos,
+                ingreso_changos:transporte.ingreso_changos,
+                ingreso_changos_hora: transporte.ingreso_changos_hora,
+                salida_changos: transporte.salida_changos,
+                salida_changos_hora: transporte.salida_changos_hora,
+                cantidad_chofer:transporte.cantidad_chofer,
+                cantidad_almuerzo_chofer: transporte.cantidad_almuerzo_chofer,
+                cantidad_cena_chofer: transporte.cantidad_cena_chofer,
+                ingreso_chofer: transporte.ingreso_chofer,
+                ingreso_chofer_hora: transporte.ingreso_chofer_hora,
+                salida_chofer:transporte.salida_chofer,
+                salida_chofer_hora: transporte.salida_chofer_hora,
+                cant_estadia_cober_prop: transporte.cant_estadia_cober_prop,
+                cant_almuer_estadia_cober_prop: transporte.cant_almuer_estadia_cober_prop,
+                cant_cena_estadia_cober_prop: transporte.cant_cena_estadia_cober_prop,
+                ingre_estadia_cober_prop:transporte.ingre_estadia_cober_prop,
+                ingre_hora_estadia_cober_prop: transporte.ingre_hora_estadia_cober_prop,
+                sali_estadia_cober_prop: transporte.sali_estadia_cober_prop,
+                sali_hora_estadia_cober_prop: transporte.sali_hora_estadia_cober_prop,
+                chango_por_llegar_dia:transporte.chango_por_llegar_dia,
+                chango_por_llegar_hora:transporte.chango_por_llegar_hora,
+                chango_por_salir_cant:transporte.chango_por_salir_cant,
+                }
             })
           }
 
@@ -137,8 +189,16 @@ render(){
             <button className='expo'><i className="fa-sharp fa-solid fa-file-excel"></i></button> */}
         </div>
         <div className='btnexportarfres'>
-            <button className='expofres'><i className="fa-sharp fa-solid fa-file-pdf"></i></button>
-            <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button>
+            {/* <button className='expofres'><i className="fa-sharp fa-solid fa-file-pdf"></i></button>
+            <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button> */}
+            <ReactHTMLTableToExcel
+                   
+                   className="fa-sharp fa-solid fa-file-excel"
+                   table="table-to-xls"
+                   filename="Informes"
+                   sheet="Informes"
+                   >
+         <button className='expo'><i className="fa-sharp fa-solid fa-file-excel"></i></button></ReactHTMLTableToExcel>
         </div>
         
            
@@ -147,13 +207,14 @@ render(){
          <div className='containertablacom'>
            <div className='row'>
             <div className='col'>
-                <Table striped bordered hover className='tablainfo' size="sm">
+                <Table striped bordered hover className='tablainfo' size="sm" id='table-to-xls'>
                     <thead >
                         <tr className='accionescombu'>
                             <th>Id</th>
                             <th>Fecha</th> 
                             <th className='camposcombu'>Intendencia</th>
-                            
+                            <th>Km recorridos</th>
+                            <th>Km total</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -164,7 +225,8 @@ render(){
                             <td >{transporte.id}</td>
                             <td>{transporte.fecha}</td>
                             <td className='camposcombu'>{transporte.intendencia}</td>
-                            
+                            <td>{transporte.cant_estadias}</td>
+                            <td>{transporte.cant_km}</td>
                             <td>
                                 <button className="botonac btn" onClick={()=>{this.seleccionarEmpresa(transporte); this.modalInsertar()}}><FontAwesomeIcon icon={faEdit}/></button>
                                 {"   "}
@@ -178,7 +240,7 @@ render(){
                     
                     </tbody>
                 </Table>
-              <Modal isOpen={this.state.modalInsertar} className='modalcombus'>
+              <Modal isOpen={this.state.modalInsertar} className='modalcombus modal-dialog modal-dialog-scrollable'>
                 <ModalHeader className='modalhederr' style={{display: 'block'}}>
                   {/* <span  style={{float: 'right'}} onClick={()=>this.modalInsertar()}>x</span> */}
                   <span style={{float: 'right'}} onClick={()=>this.modalInsertar()}>x</span>
@@ -194,13 +256,16 @@ render(){
                   
                     <select className="fechainfo form-select" name='intendencia' id='intendencia' onChange={this.handleChange} value={form?form.intendencia: ''} required={true}>
                         <option selected>Intendencia</option>
-                        <option>KWS-Complejo</option>
-                        <option>KWS-Campamento</option>
-                        <option>CORTEVA-Santa Isabel</option>
-                        <option>CORTEVA-Venado Tuerto</option>
-                        <option>BAYER</option>
-                        <option>SANPA</option>
-                        <option>ZUCO</option>
+                        <option>KWS-ISABEL</option>
+                        <option>SANPA-ISABEL</option>
+                        <option>BAYER-ISABEL</option>
+                        <option>SINGENTA-ISABEL</option>
+                        <option>CORTEVA-ISABEL</option>
+                        <option>CORTEVA-VENADO</option>
+                        <option>KWS-RAWSON</option>
+                        <option>KWS-SALTO</option>
+                        <option>KWS-ALFONSO</option>
+  
                     </select>
                     <label htmlFor="capital_bursatil">Kilometros semillero</label>
                     <input className="form-control" type="text" name="cant_estadias" id="cant_estadias" onChange={this.handleChange} value={form?form.cant_estadias:''}/>
@@ -229,9 +294,76 @@ render(){
                     <br/>
                     <label>Cantidad de kilos de hielo utilizados para complejo </label>
                     <input className="form-control" type="text" name="bidones_trafic" id="bidones_trafic" onChange={this.handleChange} value={form?form.bidones_trafic:''}/>
-                    <br/>
-                    <label>Cantidad de bidones al dispencer </label>
-                    <input className="form-control" type="text" name="hielo_complejo" id="hielo_complejo" onChange={this.handleChange} value={form?form.hielo_complejo:''}/> 
+                    <hr/>
+                    <h5>Control de estadias</h5>
+                    <label for="formGroupExampleInput2" className="form-label">Fecha estadia</label>
+                    <input  type='date' name='fecha_estadia' className="fechainfo form-control" id='fecha_estadia' onChange={this.handleChange} value={form?form.fecha_estadia: ''} required={true}></input>
+                    {/* <select className="fechainfo form-select" name='intendencia' id='intendencia' onChange={this.handleChange} value={form?form.intendencia: ''} required={true}>
+                        <option selected>Cliente</option>
+                        <option>KWS-ISABEL</option>
+                        <option>SANPA-ISABEL</option>
+                        <option>BAYER-ISABEL</option>
+                        <option>SINGENTA-ISABEL</option>
+                        <option>CORTEVA-ISABEL</option>
+                        <option>CORTEVA-VENADO</option> 
+                        <option>KWS-RAWSON</option>
+                        <option>KWS-SALTO</option>
+                        <option>KWS-ALFONSO</option>
+  
+                    </select> */}
+                    <label>Cantidad de changos</label>
+                    <input className="form-control" type="text" name="cantidad_changos" id="cantidad_changos" onChange={this.handleChange} value={form?form.cantidad_changos:''}/>
+                    <label>Cantidad almuerzo changos </label>
+                    <input className="form-control" type="text" name="cant_almuerzo_changos" id="cant_almuerzo_changos" onChange={this.handleChange} value={form?form.cant_almuerzo_changos:''}/>
+                    <label>Cantidad cena changos </label>
+                    <input className="form-control" type="text" name="cant_cena_changos" id="cant_cena_changos" onChange={this.handleChange} value={form?form.cant_cena_changos:''}/>
+                    <label for="formGroupExampleInput2" className="form-label">Ingreso chango</label>
+                    <input  type='date' name='ingreso_changos' className="fechainfo form-control" id='ingreso_changos' onChange={this.handleChange} value={form?form.ingreso_changos: ''} required={true}></input>
+                    <input  type='time' name='ingreso_changos_hora' className="fechainfo form-control" id='ingreso_changos_hora' onChange={this.handleChange} value={form?form.ingreso_changos_hora: ''} required={true}></input>
+
+                    <label for="formGroupExampleInput2" className="form-label">Salida chango</label>
+                    <input  type='date' name='salida_changos' className="fechainfo form-control" id='salida_changos' onChange={this.handleChange} value={form?form.salida_changos: ''} required={true}></input>
+                    <input  type='date' name='salida_changos_hora' className="fechainfo form-control" id='salida_changos_hora' onChange={this.handleChange} value={form?form.salida_changos_hora: ''} required={true}></input>
+
+                    <label>Cantidad chofer </label>
+                    <input className="form-control" type="text" name="cantidad_chofer" id="cantidad_chofer" onChange={this.handleChange} value={form?form.cantidad_chofer:''}/>
+                    <label>Cantidad almuerzo chofer </label>
+                    <input className="form-control" type="text" name="cantidad_almuerzo_chofer" id="cantidad_almuerzo_chofer" onChange={this.handleChange} value={form?form.cantidad_almuerzo_chofer:''}/>
+                    <label>Cantidad cena chofer</label>
+                    <input className="form-control" type="text" name="cantidad_cena_chofer" id="cantidad_cena_chofer" onChange={this.handleChange} value={form?form.cantidad_cena_chofer:''}/>
+                    <label for="formGroupExampleInput2" className="form-label">Ingreso chofer</label>
+                    <input  type='date' name='ingreso_chofer' className="fechainfo form-control" id='ingreso_chofer' onChange={this.handleChange} value={form?form.ingreso_chofer: ''} required={true}></input>
+                    <input  type='time' name='ingreso_chofer_hora' className="fechainfo form-control" id='ingreso_chofer_hora' onChange={this.handleChange} value={form?form.ingreso_chofer_hora: ''} required={true}></input>
+
+                    <label for="formGroupExampleInput2" className="form-label">Salida chofer</label>
+                    <input  type='date' name='salida_chofer' className="fechainfo form-control" id='salida_chofer' onChange={this.handleChange} value={form?form.salida_chofer: ''} required={true}></input>
+                    <input  type='time' name='salida_chofer_hora' className="fechainfo form-control" id='salida_chofer_hora' onChange={this.handleChange} value={form?form.salida_chofer_hora: ''} required={true}></input>
+
+                    <label>Cantidad estadia cobertura propia</label>
+                    <input className="form-control" type="text" name="cant_estadia_cober_prop" id="cant_estadia_cober_prop" onChange={this.handleChange} value={form?form.cant_estadia_cober_prop:''}/>
+                    <label>Cantidad almuerzo estadia cobertura propia</label>
+                    <input className="form-control" type="text" name="cant_almuer_estadia_cober_prop" id="cant_almuer_estadia_cober_prop" onChange={this.handleChange} value={form?form.cant_almuer_estadia_cober_prop:''}/>
+                    <label>Cantidad cena cobertura propia</label>
+                    <input className="form-control" type="text" name="cant_cena_estadia_cober_prop" id="cant_cena_estadia_cober_prop" onChange={this.handleChange} value={form?form.cant_cena_estadia_cober_prop:''}/>
+                    <label for="formGroupExampleInput2" className="form-label">ingreso estadia cobertura propia</label>
+                    <input  type='date' name='ingre_estadia_cober_prop' className="fechainfo form-control" id='ingre_estadia_cober_prop' onChange={this.handleChange} value={form?form.ingre_estadia_cober_prop: ''} required={true}></input>
+                    <input  type='time' name='ingre_hora_estadia_cober_prop' className="fechainfo form-control" id='ingre_hora_estadia_cober_prop' onChange={this.handleChange} value={form?form.ingre_hora_estadia_cober_prop: ''} required={true}></input>
+
+                    <label for="formGroupExampleInput2" className="form-label">Salida estadia cobertura propia</label>
+                    <input  type='date' name='sali_estadia_cober_prop' className="fechainfo form-control" id='sali_estadia_cober_prop' onChange={this.handleChange} value={form?form.sali_estadia_cober_prop: ''} required={true}></input>
+                    <input  type='time' name='sali_hora_estadia_cober_prop' className="fechainfo form-control" id='sali_hora_estadia_cober_prop' onChange={this.handleChange} value={form?form.sali_hora_estadia_cober_prop: ''} required={true}></input>
+
+                    <label for="formGroupExampleInput2" className="form-label">Chango por llegar-dia</label>
+                    <input  type='date' name='chango_por_llegar_dia' className="fechainfo form-control" id='chango_por_llegar_dia' onChange={this.handleChange} value={form?form.chango_por_llegar_dia: ''} required={true}></input>
+                    <input  type='time' name='chango_por_llegar_hora' className="fechainfo form-control" id='chango_por_llegar_hora' onChange={this.handleChange} value={form?form.chango_por_llegar_hora: ''} required={true}></input>
+
+                    <label>Chango por salir cantidad</label>
+                    <input className="form-control" type="text" name="chango_por_salir_cant" id="chango_por_salir_cant" onChange={this.handleChange} value={form?form.chango_por_salir_cant:''}/>
+
+
+
+                    {/* <label>Cantidad de bidones al dispencer </label>
+                    <input className="form-control" type="text" name="hielo_complejo" id="hielo_complejo" onChange={this.handleChange} value={form?form.hielo_complejo:''}/>  */}
                     {/* <br/>
                     <label htmlFor="capital_bursatil">Cantidad de bolsas de hielo/semillero </label>
                     <input className="form-control" type="text" name="bolsa_hielo" id="bolsa_hielo" onChange={this.handleChange} value={form?form.bolsa_hielo:''}/>
