@@ -12,8 +12,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt, faPlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import {CSVLink} from 'react-csv'
+//import ReactExport from 'react-export-excel';
 //import { DownloadTableExcel } from 'react-export-table-to-excel';
 //import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+//pdf
+
+import { Document, Page } from 'react-pdf';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 const URI = 'http://localhost:9000/frescos/'
 
 
@@ -124,7 +129,7 @@ class Frescos extends Component {
 
 
 render(){
-    const {data}=this.state;
+    const {form}=this.state;
  return(
     <>
         <div className='homefres'>
@@ -140,14 +145,39 @@ render(){
         <div className='btnexportarfres'>
             {/* <button className='expofres'><i className="fa-sharp fa-solid fa-file-pdf"></i></button>
             <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button> */}
-             <CSVLink data={data} filename={"tablafrescos.csv"}> <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button></CSVLink> 
-           
-        </div>
+            
+           {/* <CSVLink data={form} filename={"tablafrescos.csv"}> <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button></CSVLink>  */}
+
+           <ReactHTMLTableToExcel
+                   
+                    className="fa-sharp fa-solid fa-file-excel"
+                    table="table-to-xls"
+                    filename="tablexls"
+                    sheet="tablexls"
+                    >
+          <button className='expofres'><i className="fa-sharp fa-solid fa-file-excel"></i></button></ReactHTMLTableToExcel>
+          </div>
+          {/* <Document file="table-to-xls" onLoadSuccess={onDocumentLoadSuccess}>
+        <Page pageNumber={pageNumber} />
+        
+      </Document> */}
+      {/* <a href="./Frescos" > <button>Ir a PDF</button></a>
+          <div>
+                <object
+                table='table-to-xls'
+                type="application/pdf"
+                
+                >
+                  <button className='expofres'><i className="fa-sharp fa-solid fa-file-pdf"></i></button>
+                  </object>
+                  
+            </div> */}
+        
         {/* <Button className="btnNuevo btn btn-success mr-2 btn-sm" type='submit' onClicks={handleShow} />  */}
          <div className='containertablafres'>
            <div className='row'>
             <div className='col'>
-                <Table striped bordered hover className='tablafres' >
+                <Table striped bordered hover className='tablafres' id='table-to-xls'>
                     <thead >
                         <tr className='acciones'>
                             <th>Id</th>
@@ -206,18 +236,18 @@ render(){
                 <ModalBody>
                   <div className="form-group">
                     <label htmlFor="id">ID</label>
-                    <input className="form-control" type="text" name="id" id="id" readOnly onChange={this.handleChange} value={data?data.id: this.state.data.length+1}/>
+                    <input className="form-control" type="text" name="id" id="id" readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
                     <br />
                     <label for="formGroupExampleInput2" className="fecha form-label">Ingrese fecha de entrega</label>
-                    <input  type='date' name='fecha_entrega' className="fechainfo form-control" id='fecha_entrega' onChange={this.handleChange} value={data?data.fecha_entrega: ''} required={true}></input>
-                    <br/>
-                    <select className="fechainfo form-select" name='categoria' id='categoria' onChange={this.handleChange} value={data?data.categoria: ''} required={true}>
+                    <input  type='date' name='fecha_entrega' className="fechainfo form-control" id='fecha_entrega' onChange={this.handleChange} value={form?form.fecha_entrega: ''} required={true}></input>
+                  
+                    <select className="fechainfo form-select" name='categoria' id='categoria' onChange={this.handleChange} value={form?form.categoria: ''} required={true}>
                     <option selected>Seleccione categoria</option>
                     <option>Carne</option>
                         <option>Verdura</option>
                 </select>
                     <br />
-                    <select className="fechainfo form-select" name='articulos' id='articulos' onChange={this.handleChange} value={data?data.articulos: ''} required >
+                    <select className="fechainfo form-select" name='articulos' id='articulos' onChange={this.handleChange} value={form?form.articulos: ''} required >
                           <option selected>Seleccione articulo</option>
                           <option >Carne vaca</option>
                           <option>pollo</option>
@@ -225,7 +255,7 @@ render(){
                       </select>
                     <br />
                     <label htmlFor="capital_bursatil">Ingrese cantidad</label>
-                    <input className="form-control" type="text" name="cantidad" id="cantidad" onChange={this.handleChange} value={data?data.cantidad:''} required={true}/>
+                    <input className="form-control" type="text" name="cantidad" id="cantidad" onChange={this.handleChange} value={form?form.cantidad:''} required={true}/>
                   </div>
                 </ModalBody>
                 <ModalFooter>
@@ -241,7 +271,7 @@ render(){
           </Modal>
           <Modal isOpen={this.state.modalEliminar}>
             <ModalBody>
-               Estás seguro que deseas eliminar a la pedido: {data && data.id}
+               Estás seguro que deseas eliminar a la pedido: {form && form.id}
             </ModalBody>
             <ModalFooter>
               <button className="btn btn-danger" onClick={()=>this.peticionDelete()}>Sí</button>

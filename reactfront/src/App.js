@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-//import './App.css';
+import './App.css';
 //import DataTableCrudDemo from './pedidos/ShowPedidos'
 
 import Notificaciones from './notificaciones/Notificaciones'
@@ -8,7 +8,7 @@ import Barra from './barra/Barra'
 import Informes from './pedidos/Informes/Informes'
 
 import CompCreatePedido from './pedidos/Frescos/CreatePedidosFrescos'
-import Login from './login/auth';
+import Login from './login/Login';
 import Home from './home/home';
 import Configuracion from './configuracion/config'
 

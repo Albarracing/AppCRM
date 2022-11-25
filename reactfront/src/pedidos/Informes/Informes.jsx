@@ -34,6 +34,9 @@ class Informes extends Component {
             bolsa_hielo:'',
             hielo_trafic:'',
             observaciones:'',
+            semillero_hielo:'',
+            agua_complejo:'',
+            hielo_complejo:'',
             tipoModal:'',
         }
     }
@@ -94,6 +97,9 @@ class Informes extends Component {
                 bolsa_hielo:transporte.bolsa_hielo,
                 hielo_trafic:transporte.hielo_trafic,
                 observaciones:transporte.observaciones,
+                semillero_hielo:transporte.semillero_hielo,
+                agua_complejo:transporte.agua_complejo,
+                hielo_complejo:transporte.hielo_complejo,
               }
             })
           }
@@ -185,7 +191,7 @@ render(){
                     <br />
                     <label for="formGroupExampleInput2" className="form-label">Ingrese fecha del informe</label>
                     <input  type='date' name='fecha' className="fechainfo form-control" id='fecha' onChange={this.handleChange} value={form?form.fecha: ''} required={true}></input>
-                    <br/>
+                  
                     <select className="fechainfo form-select" name='intendencia' id='intendencia' onChange={this.handleChange} value={form?form.intendencia: ''} required={true}>
                         <option selected>Intendencia</option>
                         <option>KWS-Complejo</option>
@@ -196,38 +202,38 @@ render(){
                         <option>SANPA</option>
                         <option>ZUCO</option>
                     </select>
-                    <label htmlFor="capital_bursatil">Cantidad de estadias</label>
+                    <label htmlFor="capital_bursatil">Kilometros semillero</label>
                     <input className="form-control" type="text" name="cant_estadias" id="cant_estadias" onChange={this.handleChange} value={form?form.cant_estadias:''}/>
                     <br/>
-                    <label htmlFor="capital_bursatil">Cantidad de KM recorridos </label>
+                    <label htmlFor="capital_bursatil">Kilometros total </label>
                     <input className="form-control" type="text" name="cant_km" id="cant_km" onChange={this.handleChange} value={form?form.cant_km:''}/>
-                    <br/>
-                    <br/>
-                    <select className="fechainfo form-select" aria-label="Default select example" required={true} name="fac_extra" id="fac_extra" onChange={this.handleChange} value={form?form.fac_extra:''}>
+                    {/* <br/>
+                    <br/> */}
+                    {/* <select className="fechainfo form-select" aria-label="Default select example" required={true} name="fac_extra" id="fac_extra" onChange={this.handleChange} value={form?form.fac_extra:''}>
                         <option selected>Hubo facturacion extra</option>
                         <option>Si</option>
                         <option>No</option>
-                    </select>
-                    <br/>
-                    <label>Que servicio o producto debemos facturar? </label>
-                    <input className="form-control" type="text" name="desc_fec_extra" id="desc_fec_extra" onChange={this.handleChange} value={form?form.desc_fec_extra:''}/>
-                    <br/>
-                    <label>Cantidad de bidones utilizados</label>
+                    </select> */}
+                    {/* <br/> */}
+                    {/* <label>Que servicio o producto debemos facturar? </label>
+                    <input className="form-control" type="text" name="desc_fec_extra" id="desc_fec_extra" onChange={this.handleChange} value={form?form.desc_fec_extra:''}/> */}
+                    {/* <br/> */}
+                    <label>Bidones utilizados para el semillero/campo</label>
                     <input className="form-control" type="text" name="bidones_util" id="bidones_util" onChange={this.handleChange} value={form?form.bidones_util:''}/>
                     <br/>
-                    <label>Cantidad de bidones recargados </label>
-                    <input className="form-control" type="text" name="bidones_recar" id="bidones_recar" onChange={this.handleChange} value={form?form.bidones_recar:''}/>
+                     <label>kilos de hielo para el semillero/campo </label>
+                    <input className="form-control" type="text" name="semillero_hielo" id="semillero_hielo" onChange={this.handleChange} value={form?form.semillero_hielo:''}/>
                     <br/>
-                    <label>Cantidad de bidones nuevos </label>
-                    <input className="form-control" type="text" name="bidones_nuevos" id="bidones_nuevos" onChange={this.handleChange} value={form?form.bidones_nuevos:''}/>
+                   <label>Cantidad de bidones utilizados para complejo </label>
+                    <input className="form-control" type="text" name="agua_complejo" id="agua_complejo" onChange={this.handleChange} value={form?form.agua_complejo:''}/>
                     <br/>
-                    <label>Cantidad de bidones a la trafic </label>
+                    <label>Cantidad de kilos de hielo utilizados para complejo </label>
                     <input className="form-control" type="text" name="bidones_trafic" id="bidones_trafic" onChange={this.handleChange} value={form?form.bidones_trafic:''}/>
                     <br/>
                     <label>Cantidad de bidones al dispencer </label>
-                    <input className="form-control" type="text" name="bidones_dispencer" id="bidones_dispencer" onChange={this.handleChange} value={form?form.bidones_dispencer:''}/>
-                    <br/>
-                    <label htmlFor="capital_bursatil">Cantidad de bolsas de hielo </label>
+                    <input className="form-control" type="text" name="hielo_complejo" id="hielo_complejo" onChange={this.handleChange} value={form?form.hielo_complejo:''}/> 
+                    {/* <br/>
+                    <label htmlFor="capital_bursatil">Cantidad de bolsas de hielo/semillero </label>
                     <input className="form-control" type="text" name="bolsa_hielo" id="bolsa_hielo" onChange={this.handleChange} value={form?form.bolsa_hielo:''}/>
                     <br/>
                     <label htmlFor="capital_bursatil">Cuantas de bolsas fueron a la trafic</label>
@@ -235,7 +241,7 @@ render(){
                     <br/>
                     <label htmlFor="capital_bursatil">Observaciones/Novedades</label>
                     <input className="form-control" type="text" name="observaciones" id="observaciones" onChange={this.handleChange} value={form?form.observaciones:''}/>
-                    <br/>
+                    <br/> */}
                 </div>
                 </ModalBody>
 

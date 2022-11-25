@@ -1,6 +1,9 @@
 .containercon{
     height: 100%;
 }
+.form-control{
+    margin-bottom: 40px;
+}
 .usuario{
     display:flex;
     width: 450px;
@@ -26,6 +29,7 @@
 .nombreape{
     display: flex;
     width: 450px;
+    
 }
 .celemail{
     display: flex;

@@ -1,9 +1,10 @@
 import react from 'react'
 import './auth.css'
+import fondo from './fondo.jpg'
 const Login = () =>{
   
     return(
-        <div>
+        <div className='login'>
            <div className="wrapper fadeInDown">
             <div id="formContent">
                 <div className="fadeIn first">
@@ -18,7 +19,11 @@ const Login = () =>{
                         <a className="underlineHover" href="#">Forgot Password?</a>
                     </div>
                 </div>
+                <div className='imgfondo'>
+                    <img className='fondo' src={fondo}/>
+                </div>
             </div>
+           
         </div>
     )
 }

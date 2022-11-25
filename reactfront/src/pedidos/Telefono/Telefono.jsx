@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt, faPlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import './Telefono.css'
+import {CSVLink} from 'react-csv'
 import CompCreatetelefono from './CreateTelefono'
 //import './DataTableDemo.css';
 const URI = 'http://localhost:9000/telefono/'
@@ -128,8 +129,9 @@ return(
     </div>
     
     <div className='btnexportartel'>
-        <button className='expotel' size="sm"><i className="fa-sharp fa-solid fa-file-pdf"></i></button>
-        <button className='expotel' size="sm"><i className="fa-sharp fa-solid fa-file-excel"></i></button>
+        {/* <button className='expotel' size="sm"><i className="fa-sharp fa-solid fa-file-pdf"></i></button>
+        <button className='expotel' size="sm"><i className="fa-sharp fa-solid fa-file-excel"></i></button> */}
+        {/* <CSVLink  filename={"tablafrescos.csv"}> <button className='expotel'><i className="fa-sharp fa-solid fa-file-excel"></i></button></CSVLink>  */}
     </div>
     {/* <Button className="btnNuevo btn btn-success mr-2 btn-sm" type='submit' onClicks={handleShow} />  */}
      <div className='containertablatel'>

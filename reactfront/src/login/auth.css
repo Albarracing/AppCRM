@@ -1,4 +1,14 @@
-
+.fondo{
+  float: left;
+  margin-top: 25px;
+  width: 90%;
+}
+@media screen and (max-width:500px) {
+  .fondo{
+     display: none;
+  }  
+  }
+  
 /* BASIC */
 
 html {
@@ -30,12 +40,12 @@ html {
   
   
   /* STRUCTURE */
-  
+  /* flex-direction: column;  */
   .wrapper {
     display: flex;
     align-items: center;
-    flex-direction: column; 
-    justify-content: center;
+    
+    justify-content: left;
     width: 100%;
     min-height: 100%;
     padding: 20px;
@@ -46,15 +56,21 @@ html {
     border-radius: 10px 10px 10px 10px;
     background: #fff;
     padding: 30px;
-    width: 90%;
+    margin-left: 150px;
     max-width: 450px;
     position: relative;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
+    height: 500px;
+    margin-top: 30px;
   }
-  
+  @media screen and (max-width:500px) {
+    #formContent{
+       margin-left: 0px;
+    }  
+    }
   #formFooter {
     background-color: #f6f6f6;
     border-top: 1px solid #dce8f1;
@@ -62,6 +78,7 @@ html {
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
+    margin-top: 70px;
   }
   
   
@@ -95,7 +112,7 @@ html {
     box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 40px 20px;
+    margin: 25px 20px 40px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -124,7 +141,7 @@ html {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 5px;
+    margin: 25px;
     width: 85%;
     border: 2px solid #f6f6f6;
     -webkit-transition: all 0.5s ease-in-out;
@@ -233,6 +250,7 @@ html {
     -webkit-animation-duration:1s;
     -moz-animation-duration:1s;
     animation-duration:1s;
+    background-color: white;
   }
   
   .fadeIn.first {

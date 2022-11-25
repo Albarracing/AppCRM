@@ -165,7 +165,7 @@ render(){
                             <td className='camposcombu'>{transporte.cantidad}</td>
                             <td className='camposcombu'>{transporte.importe}</td>
                             <td>
-                            <button className="botonac btn" onClick={()=>{this.seleccionarEmpresa(transporte); this.setState({modalEliminar: true})}}><FontAwesomeIcon icon={faMagnifyingGlass}/></button>
+                            <button className="botonac btn" onClick={()=>{this.seleccionarEmpresa(transporte); this.modalInsertar()}}><FontAwesomeIcon icon={faEdit}/></button>
                                 <button className="botonac btn" onClick={()=>{this.seleccionarEmpresa(transporte); this.modalInsertar()}}><FontAwesomeIcon icon={faEdit}/></button>
                                 {"   "}
 

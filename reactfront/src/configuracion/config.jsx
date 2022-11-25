@@ -219,6 +219,7 @@ const {form}=this.state;
             <Modal isOpen={this.state.modalInsertar} className='modalcombus'>
             <ModalHeader className='modalhedertrans' style={{display: 'block'}}>
             <span style={{float: 'right'}} onClick={()=>this.modalInsertar()}>X</span> 
+            <h5>Cargar usuarios</h5>
             </ModalHeader>
   
       {/* dividir la pantalla a la mitad */}
@@ -242,7 +243,7 @@ const {form}=this.state;
              
                 <div className="celemail">
                 <input type="text" className="form-control" placeholder="Número de Celular" name="telefono" id="telefono" onChange={this.handleChange} value={form?form.telefono:''}/>
-              <input type="text" className="form-control" placeholder="Email" name="email" id="email" onChange={this.handleChange} value={form?form.email:''}/>
+                <input type="text" className="form-control" placeholder="Email" name="email" id="email" onChange={this.handleChange} value={form?form.email:''}/>
 
                 </div>
              
@@ -296,8 +297,13 @@ const {form}=this.state;
               
                 <label>Tipo de usuario</label>
                 <div className="tipusua">
-                  
-                    <input className="form-check-input" type="checkbox" name="tip_usuario" id="tip_usuario" onChange={this.handleChange} value={form?form.tip_usuario:''} />
+                <select className="form-select" placeholder="Puesto" name="tip_usuario" id="tip_usuario" onChange={this.handleChange} value={form?form.tip_usuario:''} >
+                    <option selected>Elige...</option>
+                    <option>Nivel 1 </option>
+                    <option>Nivel 2</option>
+                    <option>Nivel 3</option>
+                  </select>
+                    {/* <input className="form-check-input" type="checkbox" name="tip_usuario" id="tip_usuario" onChange={this.handleChange} value={form?form.tip_usuario:''} />
                     <label className="form-check-label" for="gridCheck">
                         Nivel 1 
                     </label>
@@ -311,7 +317,7 @@ const {form}=this.state;
                     <input className="niveles form-check-input" type="checkbox" name="tip_usuario" id="tip_usuario" onChange={this.handleChange} value={form?form.tip_usuario:''}/>
                     <label className="form-check-label" for="gridCheck">
                         Nivel 3
-                    </label>
+                    </label> */}
                   
                   </div>
                   <div className="anular form-check col-md-4">

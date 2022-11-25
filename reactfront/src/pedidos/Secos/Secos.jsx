@@ -200,7 +200,7 @@ return(
                     <br />
                     <label for="formGroupExampleInput2" className="fecha form-label">Ingrese fecha de entrega</label>
                     <input  type='date' name='fecha_entrega' className="camposec form-control" id='fecha_entrega' onChange={this.handleChange} value={form?form.fecha_entrega: ''} required={true}></input>
-                    <br/>
+                    
                     <select className="camposec form-select" name='categoria' id='categoria' onChange={this.handleChange} value={form?form.categoria: ''} required={true}>
                     <option selected>Seleccione categoria</option>
                     <option>Enlatado</option>
